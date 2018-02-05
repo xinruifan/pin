@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--去掉系统默认的标题栏-->
+        <item name="colorPrimary">#ff3300</item>
+        <item name="colorPrimaryDark">#f32451</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <!--圆形图片 -->
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="border_overlay" format="boolean" />
+    </declare-styleable>
+
+
+
+</resources>

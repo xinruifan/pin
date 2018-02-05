@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/search12"
+        android:icon="@drawable/sousuokuang"
+        android:title="12"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/icon34"
+        android:icon="@drawable/icon"
+        android:title="34"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/icon56"
+        android:title="56"
+        app:showAsAction="never" />
+
+
+</menu>

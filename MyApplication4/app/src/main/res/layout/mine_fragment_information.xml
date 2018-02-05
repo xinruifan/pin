@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+<android.support.v7.widget.Toolbar
+
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:id="@+id/mine_info_title"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
+    <RelativeLayout
+        android:gravity="left"
+        android:id="@+id/mine_info_backLayout"
+        android:layout_width="50dp"
+
+        android:layout_height="match_parent">
+        <ImageView
+
+            android:id="@+id/mine_info_backImage"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/back2"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:onClick="get"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:layout_gravity="center"
+        android:text="我的信息"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+</android.support.v7.widget.Toolbar>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="14dp"
+        android:id="@+id/mine_info_headedit_layout"
+        android:layout_below="@+id/mine_info_title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <com.example.fxr.myapplication.mineInformation.RoundImageView
+
+            android:id="@+id/mine_info_head_show"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/touxiang"
+
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@drawable/next"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:id="@+id/to2"
+         />
+    </RelativeLayout>
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/mine_info_id_layout"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@+id/mine_info_headedit_layout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:gravity="center"
+            android:text="ID 824734850"
+            android:id="@+id/mine_info_id_show"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/mine_nickname_edit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="39dp"
+        android:layout_below="@+id/mine_info_headedit_layout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:gravity="center_vertical"
+            android:textSize="22sp"
+            android:text="昵称"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/mine_info_nicknamelabel"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:gravity="center"
+            android:textSize="22sp"
+            android:text="publicstaticvoidmain"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/mine_nickname_show"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+        <ImageView
+            android:src="@drawable/next"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/to3" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/mine_borthlayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:id="@+id/mine_borthlabel"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:text="生日"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="19dp"
+            android:layout_marginStart="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/mine_info_borthshow"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:text="1997-11-11"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+        <ImageView
+            android:src="@drawable/next"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/to4" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/relativeLayout2"
+        android:layout_below="@+id/mine_nickname_edit_layout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:layout_gravity="left"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:id="@+id/mine_info_sexlabel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="性别"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/mine_info_sexshow"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:text="男"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+        <ImageView
+            android:src="@drawable/next"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/to5" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/mine_info_regionlayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/mine_borthlayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:gravity="center"
+            android:text="地区"
+            android:textSize="22sp"
+            android:id="@+id/mine_info_region_label"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="20dp" />
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:text="四川 自贡市 自流井区"
+            android:id="@+id/mine_info_region_show"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+        <ImageView
+            android:src="@drawable/next"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:id="@+id/to6"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

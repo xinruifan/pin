@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/accout_setting_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="账号设置" />
+
+    <Button
+        android:gravity="left"
+        android:id="@+id/change_phonenum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="24dp"
+        android:text="修改手机号码"
+        android:layout_below="@+id/accout_setting_title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/chang_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:layout_below="@+id/change_phonenum"
+        android:layout_marginTop="10dp"
+        android:text="修改登录密码" />
+
+    <Button
+        android:background="#ff0000"
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="注销当前账号"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/chang_password"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

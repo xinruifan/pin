@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/message_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.84"
+        android:gravity="center"
+
+        android:text="这是拼组界面"></TextView>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/myGroupReturn_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="?attr/colorPrimary"
+        app:contentInsetStart="0dp"
+
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:weightSum="0"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/good_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.84"
+            android:gravity="center"
+            android:text="我的拼组"></TextView>
+        <ImageView
+            android:id="@+id/myGroupReturn_up"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/reply"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            >
+        </ImageView>
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+</RelativeLayout>

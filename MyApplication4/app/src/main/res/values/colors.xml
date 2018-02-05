@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="black">#000000</color>
+    <color name="colorAccent">#FF4081</color>
+    <!-- 分割线颜色 -->
+    <color name="divider_color">#cccccc</color>
+    <!-- 选中颜色 -->
+    <color name="white">#FFFFFF</color>
+    <color name="filter_bg">#eeeeee</color>
+    <color name="background">#EEEEEE</color>
+    <color name="split_line">#11112233</color>
+    <color name="text1">#59B29C</color>
+    <color name="text2">#333333</color>
+    <color name="click">#FFFFFF</color>
+    <color name="clicked">#DDDDDD</color>
+</resources>

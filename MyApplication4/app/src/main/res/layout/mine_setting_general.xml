@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/general_setting_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+
+        android:text="通用设置" />
+
+    <Switch
+        android:gravity="left"
+        android:id="@+id/notice_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="新消息提醒"
+        android:layout_below="@+id/general_setting_title"
+        android:layout_centerHorizontal="true" />
+
+    <Switch
+        android:id="@+id/sound_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="声音"
+        android:layout_below="@+id/notice_switch"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="28dp" />
+
+    <Switch
+        android:id="@+id/shake_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sound_switch"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:text="振动" />
+
+</RelativeLayout>

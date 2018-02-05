@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+        <RelativeLayout
+            android:background="@drawable/layout_click_effect"
+            android:gravity="center"
+            android:id="@+id/mine_city_back_layout"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/mine_city_back"
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/back2" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="选择所在地"
+            android:textSize="22sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:id="@+id/mine_city_textView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:hint="点此修改所在地" />
+
+
+</LinearLayout>

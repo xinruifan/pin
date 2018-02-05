@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">拼拼</string>
+    <string name="jiazaiyu">拼爹加载中...</string>
+    <string name="gongzuoshi">by fivecoder 发行</string>
+    <string name="welcome">拼爹拼不过，还不拼自己。</string>
+    <string name="shaixuan">筛选</string>
+    <string name="local">定位</string>
+    <string name="time">时 间</string>
+    <string name="fenlei">分 类</string>
+    <string name="renshu">人 数</string>
+</resources>

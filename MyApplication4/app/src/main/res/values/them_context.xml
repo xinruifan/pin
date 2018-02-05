@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="them_context">
+        <item>美食</item>
+        <item>电影</item>
+        <item>户外</item>
+        <item>运动</item>
+        <item>其他</item>
+    </string-array>
+</resources>
