@@ -2,25 +2,39 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-
     <TextView
-        android:id="@+id/textChild"
+        android:id="@+id/msg_name"
         android:layout_width="fill_parent"
         android:layout_height="60dp"
         android:paddingLeft="65dp"
-        android:paddingTop="15dp"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:textColor="@color/black"
         android:text="No data"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
+        android:textStyle="bold"
         android:layout_alignParentStart="true"></TextView>
     <com.example.fxr.myapplication.message.util.XCRoundImageView
-        android:id="@+id/headimage"
+        android:id="@+id/msg_head"
         android:src="@drawable/h1"
         android:layout_height="50dp"
         android:layout_width="50dp"
-        android:paddingLeft="10dp"
         android:layout_marginTop="5dp"
-        ></com.example.fxr.myapplication.message.util.XCRoundImageView>
+        android:layout_marginLeft="3dp"
+
+        >
+
+    </com.example.fxr.myapplication.message.util.XCRoundImageView>
+    <TextView
+        android:id="@+id/msg_msg"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:paddingLeft="65dp"
+        android:paddingTop="29dp"
+        android:textSize="15dp"
+        android:textColor="@color/text3"
+        android:text="No data"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></TextView>
 </RelativeLayout>

@@ -38,9 +38,6 @@ public class release_fragment extends Fragment implements ExpandTabView.OnFilter
         View contactsLayout = inflater.inflate(R.layout.release_layout, container,false);
 
 
-
-
-
         // 初始化布局元素
         expandTabView = (ExpandTabView) contactsLayout.findViewById(R.id.expand_tabview);
         expandTabView.setOnFilterSelected(this);
@@ -64,7 +61,7 @@ public class release_fragment extends Fragment implements ExpandTabView.OnFilter
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                com.example.fxr.myapplication.releaseInformation.Moments moments
+                Moments moments
                         = momentses.get(position);
                 Toast.makeText(getActivity(), "this is a pp_activity", Toast.LENGTH_SHORT).show();
             }
@@ -92,20 +89,20 @@ public class release_fragment extends Fragment implements ExpandTabView.OnFilter
 
     private void init() {
         for (int i = 0; i < 20; i++) {
-            com.example.fxr.myapplication.releaseInformation.Moments apple =
-                    new com.example.fxr.myapplication.releaseInformation.Moments(R.drawable.basketball,
-                            "   basketball  ", "   33  ",
-                    "  2017.09.09 下午4点  ", "  帅呆了sad  ", "   3/5   ");
+            Moments apple =
+                    new Moments(R.drawable.basketball,
+                            "运动", "飞翔的企鹅", "2018.01.09", "四川理工学院操场", "3/6",
+                            "周六下午，四川理工学院操场计算机学院班级友谊赛，速来报名！");
             momentses.add(apple);
-            com.example.fxr.myapplication.releaseInformation.Moments banana =
-                    new com.example.fxr.myapplication.releaseInformation.Moments(R.drawable.skate,
-                            "  skate  ", "   44",
-                    "  2017.09.010 x下午  ", "  adas  ", "   3/9   ");
+            Moments banana =
+                    new Moments(R.drawable.skate,
+                            "户外", "飞翔的小鸟", "2017.02.09", "花海", "3/10",
+                    "10号中午约一波花海自助游，这有俩妹子了，想朋友多点一起耍，赶快加入吧！");
             momentses.add(banana);
-            com.example.fxr.myapplication.releaseInformation.Moments cherry_pic =
-                    new com.example.fxr.myapplication.releaseInformation.Moments(R.drawable.burger,
-                            "   burger  ", "   打死9  ",
-                    "  2017.09.29 大时代  ", "  得问问  ", "   13/15   ");
+            Moments cherry_pic =
+                    new Moments(R.drawable.burger,
+                            "美食", "飞翔的兔子", "2017.03.09", "盐工号子", "3/8",
+                    "还记得华商有一家很好吃的火锅，最近想去吃火锅了，找不到人，有没有小哥哥小姐姐一起啊，我们已经有三个了，再来几个啊，不嫌多！");
             momentses.add(cherry_pic);
         }
     }

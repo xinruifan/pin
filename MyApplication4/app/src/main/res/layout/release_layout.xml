@@ -6,42 +6,28 @@
     android:orientation="vertical">
         <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-        <Button
-            android:id="@+id/btn_diy"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:background="#80ffffff"
-            android:text="@string/shaixuan"
-            android:textColor="#000000"
-            android:textSize="12sp" />
-
-        <Button
-            android:id="@+id/btn_diy1"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:background="#80ffffff"
-            android:text="@string/local"
-            android:textColor="#000000"
-            android:textSize="12sp" />
-        <ImageView
-            android:id="@+id/search"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:ellipsize="marquee"
-            android:gravity="center_horizontal|center"
-            android:src="@drawable/sousuokuang"
-            android:textColor="#ffffffff"
-            android:textSize="20dp" />
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="?attr/colorPrimaryDark"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentInsetStart="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="活动"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
     </android.support.v7.widget.Toolbar>
     <ListView
         android:id="@+id/listView"
+        android:divider="@color/clicked"
+        android:dividerHeight="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
        android:layout_marginTop="100dp" />

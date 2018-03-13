@@ -3,7 +3,6 @@ package com.example.fxr.myapplication.message;
 import android.app.ExpandableListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
@@ -11,6 +10,7 @@ import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
 import com.example.fxr.myapplication.R;
+import com.example.fxr.myapplication.message.model.message_main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,33 +42,29 @@ private TextView nickName_text;
         // 创建二个一级条目标题
         Map<String, String> title_1 = new HashMap<String, String>();
         Map<String, String> title_2 = new HashMap<String, String>();
-
-        title_1.put("group", "好友");
-        title_2.put("group", "明星");
+        title_1.put("group", "我的拼友");
+        title_2.put("group", "我的同事");
         gruops.add(title_1);
         gruops.add(title_2);
-
         // 创建二级条目内容
         // 内容一
         Map<String, String> title_1_content_1 = new HashMap<String, String>();
         Map<String, String> title_1_content_2 = new HashMap<String, String>();
         Map<String, String> title_1_content_3 = new HashMap<String, String>();
-        title_1_content_1.put("child", "李荣浩");
-        title_1_content_2.put("child", "黄家驹");
-        title_1_content_3.put("child", "李易峰");
-
+        title_1_content_1.put("child", "小张");
+        title_1_content_2.put("child", "小王");
+        title_1_content_3.put("child", "小李");
         List<Map<String, String>> childs_1 = new ArrayList<Map<String, String>>();
         childs_1.add(title_1_content_1);
         childs_1.add(title_1_content_2);
         childs_1.add(title_1_content_3);
-
         // 内容二
         Map<String, String> title_2_content_1 = new HashMap<String, String>();
         Map<String, String> title_2_content_2 = new HashMap<String, String>();
         Map<String, String> title_2_content_3 = new HashMap<String, String>();
-        title_2_content_1.put("child", "迪丽热巴");
-        title_2_content_2.put("child", "李冰冰");
-        title_2_content_3.put("child", "杨幂");
+        title_2_content_1.put("child", "小张");
+        title_2_content_2.put("child", "小王");
+        title_2_content_3.put("child", "小李");
         List<Map<String, String>> childs_2 = new ArrayList<Map<String, String>>();
         childs_2.add(title_2_content_1);
         childs_2.add(title_2_content_2);
@@ -96,17 +92,12 @@ private TextView nickName_text;
     @Override
     public boolean onChildClick(ExpandableListView parent, View v,
                                 int groupPosition, int childPosition, long id) {
-
-
         String nickName="";
-
         nickName_text=(TextView) v.findViewById(R.id.textChild);
         nickName+=nickName_text.getText().toString();
-        Log.e("昵称为",nickName_text.getText().toString());
         Intent intent=new Intent();
-        intent.setClass(addfriend.this,message_mainlayout.class);
+        intent.setClass(addfriend.this,message_main.class);
         intent.putExtra("nick",nickName);
-
         startActivity(intent);
         return true;
     }

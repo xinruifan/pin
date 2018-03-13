@@ -14,18 +14,19 @@ public class Moments {
     private String pp_time;
     private String pp_location;
     private String pp_join;
+    private String pp_content;
 
     public Moments() {
     }
 
-    public Moments(int pp_picure, String pp_them, String pp_creator,
-                   String pp_time, String pp_location, String pp_join) {
+    public Moments(int pp_picure, String pp_them, String pp_creator, String pp_time, String pp_location, String pp_join, String pp_content) {
         this.pp_picure = pp_picure;
         this.pp_them = pp_them;
         this.pp_creator = pp_creator;
         this.pp_time = pp_time;
         this.pp_location = pp_location;
         this.pp_join = pp_join;
+        this.pp_content = pp_content;
     }
 
     public int getPp_picure() {
@@ -48,8 +49,8 @@ public class Moments {
         return pp_creator;
     }
 
-    public void setPp_creator(String pp_activity_creator) {
-        this.pp_creator = pp_activity_creator;
+    public void setPp_creator(String pp_creator) {
+        this.pp_creator = pp_creator;
     }
 
     public String getPp_time() {
@@ -74,5 +75,13 @@ public class Moments {
 
     public void setPp_join(String pp_join) {
         this.pp_join = pp_join;
+    }
+
+    public String getPp_content() {
+        return pp_content;
+    }
+
+    public void setPp_content(String pp_content) {
+        this.pp_content = pp_content;
     }
 }

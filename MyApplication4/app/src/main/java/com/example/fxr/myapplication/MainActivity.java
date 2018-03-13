@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             case 0:
                 // 当点击了消息tab时，改变控件的图片和文字颜色
                 messageImage.setImageResource(R.drawable.home_2);
-                messageText.setTextColor(Color.GREEN);
+                messageText.setTextColor(Color.rgb(255,64,64));
                 if (indexFragment == null) {
                     // 如果indexFragment为空，则创建一个并添加到界面上
                     indexFragment = new index_fragment();
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             case 1:
                 // 当点击了联系人tab时，改变控件的图片和文字颜色
                 contactsImage.setImageResource(R.drawable.fabu_2);
-                contactsText.setTextColor(Color.GREEN);
+                contactsText.setTextColor(Color.rgb(255,64,64));
                 if (releaseFragment == null) {
                     // 如果releaseFragment为空，则创建一个并添加到界面上
                     releaseFragment = new release_fragment();
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             case 2:
                 // 当点击了动态tab时，改变控件的图片和文字颜色
                 newsImage.setImageResource(R.drawable.message_2);
-                newsText.setTextColor(Color.GREEN);
+                newsText.setTextColor(Color.rgb(255,64,64));
                 if (messageFragment == null) {
                     // 如果messageFragment为空，则创建一个并添加到界面上
                     messageFragment = new message_fragment();
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             default:
                 // 当点击了设置tab时，改变控件的图片和文字颜色
                 settingImage.setImageResource(R.drawable.mine_2);
-                settingText.setTextColor(Color.GREEN);
+                settingText.setTextColor(Color.rgb(255,64,64));
                 if (mineFragment == null) {
                     // 如果mineFragment为空，则创建一个并添加到界面上
                     mineFragment = new mine_fragment();

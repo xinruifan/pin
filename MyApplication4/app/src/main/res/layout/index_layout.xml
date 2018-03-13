@@ -22,39 +22,20 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:background="?attr/colorPrimary"
+            android:background="?attr/colorPrimaryDark"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:contentInsetStart="0dp"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-            <Button
-                android:id="@+id/btn_diy"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:background="#80ffffff"
-                android:text="自定义按钮"
-                android:textColor="#000000"
-                android:textSize="11sp" />
-
-            <Button
-                android:id="@+id/btn_diy1"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:background="#80ffffff"
-                android:text="自定义按钮"
-                android:textColor="#000000"
-                android:textSize="11sp" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp">
 
             <ImageView
                 android:id="@+id/search"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ellipsize="marquee"
-                android:gravity="center_horizontal|center"
-                android:src="@drawable/sousuokuang"
-                android:textColor="#ffffffff"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimaryDark"
+                android:src="@drawable/search"
                 android:textSize="20dp" />
         </android.support.v7.widget.Toolbar>
 
@@ -63,7 +44,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        <com.example.fxr.myapplication.releaseInformation.ExpandTabView
+            android:id="@+id/expand_tabview"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"/>
 
         <ImageView
             android:id="@+id/myLocation"
@@ -72,7 +58,9 @@
             android:layout_alignLeft="@+id/reload"
             android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/reload"
-            android:layout_marginBottom="195dp"
+            android:layout_marginBottom="131dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginStart="9dp"
             android:src="@drawable/location" />
 
         <ImageView
@@ -82,9 +70,11 @@
             android:layout_above="@+id/myLocation"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="13dp"
-            android:src="@drawable/reload1" />
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/reload" />
 
     </RelativeLayout>
+
+
 
 </FrameLayout>

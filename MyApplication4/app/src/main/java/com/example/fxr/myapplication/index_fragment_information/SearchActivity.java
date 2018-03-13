@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.fxr.myapplication.R;
 import java.io.BufferedReader;
@@ -20,8 +22,8 @@ import java.net.Socket;
 
 public class SearchActivity extends AppCompatActivity {
     private SearchView searchView;
-    private Button search_back;
-    private Button search_sure;
+    private ImageView search_back;
+    private TextView search_sure;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,7 @@ public class SearchActivity extends AppCompatActivity {
         searchView.setIconifiedByDefault(false);
 
         //返回按钮事件 不返回参数
-        search_back=(Button)findViewById(R.id.search_back);
+        search_back=(ImageView) findViewById(R.id.search_back);
         search_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +43,7 @@ public class SearchActivity extends AppCompatActivity {
         });
 
         //确定按钮事件 返回用户搜索信息
-        search_sure=(Button) findViewById(R.id.search_sure);
+        search_sure=(TextView) findViewById(R.id.search_sure);
         search_sure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

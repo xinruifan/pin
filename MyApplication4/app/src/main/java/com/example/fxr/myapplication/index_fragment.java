@@ -9,14 +9,18 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -41,8 +45,11 @@ import com.baidu.mapapi.model.LatLng;
 import com.example.fxr.myapplication.index_fragment_information.InfoWindowHolder;
 import com.example.fxr.myapplication.index_fragment_information.SearchActivity;
 import com.example.fxr.myapplication.index_fragment_information.markbean;
+import com.example.fxr.myapplication.releaseInformation.ExpandTabView;
+import com.example.fxr.myapplication.releaseInformation.FilterTabView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -51,7 +58,7 @@ import java.util.List;
  */
 
 @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
-public class index_fragment extends Fragment{
+public class index_fragment extends Fragment implements ExpandTabView.OnFilterSelected {
     private MapView mMapView;
     private BaiduMap baidumap;
     private ImageView my_location;
@@ -69,6 +76,10 @@ public class index_fragment extends Fragment{
     private InfoWindow mInfoWindow;
     private LinearLayout baidumap_infowindow;
 
+    //筛选
+    private ArrayList<String> nameList;//顶部tab条目列表
+    private ExpandTabView expandTabView;
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -83,6 +94,17 @@ public class index_fragment extends Fragment{
         initmylocation();
         setMarkerInfo();
         addOverlay(marks);
+        //筛选
+
+        // 初始化布局元素
+        expandTabView = (ExpandTabView) contactsLayout.findViewById(R.id.expand_tabview);
+        expandTabView.setOnFilterSelected(this);
+        nameList = new ArrayList<>();
+        nameList.add("时间");
+        nameList.add("人数");
+        nameList.add("分类");
+        expandTabView.setNameList(nameList);
+
 
         Toolbar toolbar = (Toolbar)contactsLayout.findViewById(R.id.index_toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
@@ -99,14 +121,52 @@ public class index_fragment extends Fragment{
         return contactsLayout;
     }
 
+
+    /**
+     *筛选
+     */
+    private ListView getTimeView() {
+        ListView list_View = new ListView(getActivity());
+        list_View.setAdapter(new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, Arrays.asList(new String[]{"3天以内", "一周以内", "一周以上"})));
+        return list_View;
+    }
+
+    private View getClassificationView() {
+        ListView list_View = new ListView(getActivity());
+        list_View.setAdapter(new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, Arrays.asList(new String[]{"户外", "美食", "其他"})));
+        return list_View;
+    }
+    private View getNumberView() {
+        ListView list_View = new ListView(getActivity());
+        list_View.setAdapter(new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, Arrays.asList(new String[]{"1-3人", "3-5人", "5-10人","10人以上"})));
+        return list_View;
+    }
+
+    public void onSelected(FilterTabView tabView, int position, boolean singleCheck) {
+        if (singleCheck){
+            if (position==0){
+                expandTabView.setExpandView(getTimeView());
+            }else if(position==1){
+                expandTabView.setExpandView(getNumberView());
+            }else{
+                expandTabView.setExpandView(getClassificationView());
+            }
+
+        }
+    }
+
     /**
      * 自定义位置 西部博览城覆盖物
      */
     private void setMarkerInfo() {
         marks = new ArrayList<markbean>();
-        marks.add(new markbean(30.4261549589,104.0890705903,
-                "旅游","西部博览城","13",
+        marks.add(new markbean(29.3342681588,104.7724131363,
+                "旅游","四川理工学院","13",
                 "14",3,6));
+
     }
 
     /**
@@ -171,7 +231,6 @@ public class index_fragment extends Fragment{
      *@param bean
      */
     private void createInfoWindow(LinearLayout baidumap_infowindow,markbean bean){
-
         InfoWindowHolder holder=null;
         if(baidumap_infowindow.getTag () == null){
             holder = new InfoWindowHolder ();
@@ -213,7 +272,7 @@ public class index_fragment extends Fragment{
     private void mapView(){
         baidumap=mMapView.getMap();
         //实现地图初始在200m左右
-        MapStatusUpdate mapsize= MapStatusUpdateFactory.zoomTo(16.0f);
+        MapStatusUpdate mapsize= MapStatusUpdateFactory.zoomTo(14);
         baidumap.setMapStatus(mapsize);
     }
 
@@ -288,26 +347,6 @@ public class index_fragment extends Fragment{
             mLocationClient.start();
         }
     }
-
-    /**
-     *运行了权限之后立即就可以获取到位置信息
-     */
-    @Override
-
-    public void onRequestPermissionsResult(int requestCode, String[] permissions,int[] grantResults) {
-
-        switch(requestCode) {
-            case 1: if (grantResults[0] == PackageManager.PERMISSION_GRANTED) mLocationClient.start();
-            else
-                    { Log.d("TTTT","啊偶，被拒绝了，少年不哭，站起来撸");
-            } break;
-
-            default:super.onRequestPermissionsResult(requestCode,
-                    permissions, grantResults);
-            }
-    }
-
-
 
     private class MyLocationListener implements BDLocationListener{
         @Override

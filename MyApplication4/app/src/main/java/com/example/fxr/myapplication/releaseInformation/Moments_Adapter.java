@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.example.fxr.myapplication.R;
 
 import java.util.List;
@@ -41,8 +42,9 @@ public class Moments_Adapter extends ArrayAdapter<Moments> {
             viewHolder.pp_mthem = (TextView) view.findViewById (R.id.pp_mthem);
             viewHolder.pp_mcreator = (TextView) view.findViewById (R.id.pp_mcreator);
             viewHolder.pp_mtime = (TextView) view.findViewById (R.id.pp_mtime);
-            viewHolder.pp_location = (TextView) view.findViewById (R.id.pp_location);
-            viewHolder.pp_jion = (TextView) view.findViewById (R.id.pp_jion);
+            viewHolder.pp_mlocation = (TextView) view.findViewById (R.id.pp_mlocation);
+            viewHolder.pp_mjion = (TextView) view.findViewById (R.id.pp_mjion);
+            viewHolder.pp_mcontent = (TextView) view.findViewById (R.id.pp_mcontent);
             view.setTag(viewHolder); // 将ViewHolder存储在View中
         } else {
             view = convertView;
@@ -52,8 +54,9 @@ public class Moments_Adapter extends ArrayAdapter<Moments> {
         viewHolder.pp_mthem.setText(moments.getPp_them());
         viewHolder.pp_mcreator.setText(moments.getPp_creator());
         viewHolder.pp_mtime.setText(moments.getPp_time());
-        viewHolder.pp_location.setText(moments.getPp_location());
-        viewHolder.pp_jion.setText(moments.getPp_join());
+        viewHolder.pp_mlocation.setText(moments.getPp_location());
+        viewHolder.pp_mjion.setText(moments.getPp_join());
+        viewHolder.pp_mcontent.setText(moments.getPp_content());
         return view;
     }
 
@@ -67,9 +70,11 @@ public class Moments_Adapter extends ArrayAdapter<Moments> {
 
         TextView pp_mtime;
 
-        TextView pp_location;
+        TextView pp_mlocation;
 
-        TextView pp_jion;
+        TextView pp_mjion;
+
+        TextView pp_mcontent;
 
     }
 

@@ -5,51 +5,44 @@
     android:layout_height="match_parent"
 
     >
-
-
         <android.support.v7.widget.Toolbar
             android:id="@+id/message_toolbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="?attr/colorPrimary"
+            android:background="?attr/colorPrimaryDark"
             app:contentInsetStart="0dp"
-
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:weightSum="0"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-
             <TextView
                 android:layout_gravity="center"
                 android:id="@+id/message_top"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.84"
                 android:gravity="center"
-
+                android:textSize="20dp"
                 android:text="消息"></TextView>
             <ImageView
-
-                android:id="@+id/group_image"
-                android:layout_width="35dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/add2"
-               android:layout_gravity="right"
-                android:layout_marginRight="10dp"
-            >
-            </ImageView>
-            <ImageView
-
                 android:id="@+id/addFriend_image"
-                android:layout_width="35dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/add2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/add5"
                 android:layout_gravity="right"
-                android:layout_marginRight="0dp"
-                >
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+            >
             </ImageView>
 
 
         </android.support.v7.widget.Toolbar>
 
+    <ListView
+        android:id="@+id/msg_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/message_toolbar"
+        ></ListView>
 </RelativeLayout>

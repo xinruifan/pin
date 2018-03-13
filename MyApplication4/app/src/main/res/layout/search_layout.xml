@@ -5,33 +5,46 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="?attr/colorPrimary"
+        android:background="?attr/colorPrimaryDark"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:contentInsetStart="0dp"
+        android:weightSum="1"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:weightSum="1">
-        <Button
-            android:id="@+id/search_sure"
-            android:layout_width="60dp"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp">
+
+       <TextView
+           android:id="@+id/search_sure"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="right"
+           android:text="确认"
+           android:textSize="20sp"
+           android:layout_marginRight="5px"
+           android:textColor="@android:color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:background="#80ffffff"
-            android:text="确定"
-            android:textColor="#000000"
-            android:textSize="11sp" />
-        <Button
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="搜索"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <ImageView
             android:id="@+id/search_back"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
             android:layout_gravity="left"
-            android:background="#80ffffff"
-            android:text="返回"
-            android:textColor="#000000"
-            android:textSize="11sp" />
+            android:src="@drawable/reback"
+            />
 
     </android.support.v7.widget.Toolbar>
 
