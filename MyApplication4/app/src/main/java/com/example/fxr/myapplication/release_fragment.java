@@ -109,8 +109,7 @@ import java.util.List;
         // init listview 数据
         // 适配数据源  listview
         com.example.fxr.myapplication.releaseInformation.Moments_Adapter adapter = new
-                com.example.fxr.myapplication.releaseInformation.Moments_Adapter(getActivity(),
-                R.layout.moments_item, momentses);
+                com.example.fxr.myapplication.releaseInformation.Moments_Adapter(release_fragment.this, R.layout.moments_item, momentses);
         listView = (ListView) contactsLayout.findViewById(R.id.listView);
         listView.setAdapter(adapter);
         //listview  item 点击事件
