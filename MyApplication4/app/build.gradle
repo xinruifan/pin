@@ -36,4 +36,9 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:recyclerview-v7:25.2.1'
     compile 'com.squareup.picasso:picasso:2.3.2'
+    implementation files('libs/commons-lang-2.6.jar')
+    implementation files('libs/commons-beanutils-1.9.3.jar')
+    implementation files('libs/commons-collections-3.2.2.jar')
+    implementation files('libs/commons-httpclient-2.0.2.jar')
+    implementation files('libs/json-lib-2.4-jdk15.jar')
 }

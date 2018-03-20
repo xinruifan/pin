@@ -54,4 +54,17 @@
         android:layout_height="wrap_content"
         android:queryHint="相拼点什么点我吧~~" />
 
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="自贡" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入文字进行搜索"></AutoCompleteTextView>
+
+
 </LinearLayout>

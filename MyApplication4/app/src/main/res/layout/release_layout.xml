@@ -16,31 +16,40 @@
             app:contentInsetStart="0dp"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
         <TextView
+            android:id="@+id/pp_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:text="活动"
+            android:text="拼拼"
             android:textColor="@android:color/white"
             android:textSize="20sp"/>
     </android.support.v7.widget.Toolbar>
-    <ListView
-        android:id="@+id/listView"
-        android:divider="@color/clicked"
-        android:dividerHeight="18dp"
+    <!--筛选栏-->
+<LinearLayout
+    android:layout_below="@id/toolbar"
+    android:id="@+id/release_choose_tabview1"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
+       <include layout="@layout/release_choose_tabview"
+
+           android:layout_below="@id/toolbar"
+           android:layout_width="match_parent"
+           android:layout_height="40dp"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/release_choose_tabview1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       android:layout_marginTop="100dp" />
+        android:layout_height="1dp"
+        android:orientation="horizontal">
 
-        <com.example.fxr.myapplication.releaseInformation.ExpandTabView
-            android:id="@+id/expand_tabview"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"/>
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+    </LinearLayout>
 
-
-
-        <android.support.design.widget.FloatingActionButton
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,4 +62,11 @@
         app:fabSize="normal"
         app:srcCompat="@mipmap/plus" />
 
+    <ListView
+      android:id="@+id/listView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="100dp"
+      android:divider="@color/clicked"
+        android:dividerHeight="18dp" />
 </RelativeLayout>

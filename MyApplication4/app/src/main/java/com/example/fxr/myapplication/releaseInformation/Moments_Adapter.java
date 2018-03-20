@@ -2,12 +2,14 @@ package com.example.fxr.myapplication.releaseInformation;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import java.util.List;
 
 
 import com.example.fxr.myapplication.R;
@@ -18,49 +20,13 @@ import java.util.List;
  * Created by slion on 2017/9/14.
  */
 
-public class Moments_Adapter extends ArrayAdapter<Moments> {
+public class Moments_Adapter extends RecyclerView.Adapter<Moments_Adapter.ViewHolder> {
 
 
-    private int resourceId;
-    public Moments_Adapter(Context context, int textViewResourceId,
-                           List<Moments> objects){
-        super(context, textViewResourceId, objects);
-        resourceId = textViewResourceId;
-    }
+    private List<Moments> mMomentsList;
 
-    @Override
-    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-        Moments
-                moments = getItem(position);
-        View view;
-        ViewHolder viewHolder;
-        if (convertView == null) {
-            view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
-            viewHolder = new ViewHolder();
 
-            viewHolder.pp_mimage = (ImageView) view.findViewById (R.id.pp_mimage);
-            viewHolder.pp_mthem = (TextView) view.findViewById (R.id.pp_mthem);
-            viewHolder.pp_mcreator = (TextView) view.findViewById (R.id.pp_mcreator);
-            viewHolder.pp_mtime = (TextView) view.findViewById (R.id.pp_mtime);
-            viewHolder.pp_mlocation = (TextView) view.findViewById (R.id.pp_mlocation);
-            viewHolder.pp_mjion = (TextView) view.findViewById (R.id.pp_mjion);
-            viewHolder.pp_mcontent = (TextView) view.findViewById (R.id.pp_mcontent);
-            view.setTag(viewHolder); // 将ViewHolder存储在View中
-        } else {
-            view = convertView;
-            viewHolder = (ViewHolder) view.getTag(); // 重新获取ViewHolder
-        }
-        viewHolder.pp_mimage.setImageResource(moments.getPp_picure());   //设置图片源
-        viewHolder.pp_mthem.setText(moments.getPp_them());
-        viewHolder.pp_mcreator.setText(moments.getPp_creator());
-        viewHolder.pp_mtime.setText(moments.getPp_time());
-        viewHolder.pp_mlocation.setText(moments.getPp_location());
-        viewHolder.pp_mjion.setText(moments.getPp_join());
-        viewHolder.pp_mcontent.setText(moments.getPp_content());
-        return view;
-    }
-
-    class ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView pp_mimage;
 
@@ -76,7 +42,49 @@ public class Moments_Adapter extends ArrayAdapter<Moments> {
 
         TextView pp_mcontent;
 
+
+        public ViewHolder(View view) {
+            super(view);
+
+            pp_mimage = (ImageView) view.findViewById (R.id.pp_mimage);
+            pp_mthem = (TextView) view.findViewById (R.id.pp_mthem);
+            pp_mcreator = (TextView) view.findViewById (R.id.pp_mcreator);
+            pp_mtime = (TextView) view.findViewById (R.id.pp_mtime);
+            pp_mlocation = (TextView) view.findViewById (R.id.pp_mlocation);
+            pp_mjion = (TextView) view.findViewById (R.id.pp_mjion);
+            pp_mcontent = (TextView) view.findViewById (R.id.pp_mcontent);
+        }
     }
 
+
+    public Moments_Adapter(List<Moments> momentsList) {
+        mMomentsList = momentsList;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.moments_item, parent, false);
+        ViewHolder holder = new ViewHolder(view);
+
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+
+        Moments moments = mMomentsList.get(position);
+        holder.pp_mimage.setImageResource(moments.getPp_picure());   //璁剧疆鍥剧墖婧?        holder.pp_mthem.setText(moments.getPp_them());
+        holder.pp_mcreator.setText(moments.getPp_creator());
+        holder.pp_mtime.setText(moments.getPp_time());
+        holder.pp_mlocation.setText(moments.getPp_location());
+        holder.pp_mjion.setText(moments.getPp_join());
+        holder.pp_mcontent.setText(moments.getPp_content());
+    }
+
+    @Override
+    public int getItemCount() {
+        return mMomentsList.size();
+    }
 
 }

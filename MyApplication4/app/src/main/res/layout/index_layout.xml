@@ -14,7 +14,84 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true" />
+        <RelativeLayout
+            android:id="@+id/r_marker"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="90dp"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="#ffffff"
+            android:visibility="gone"
+            android:clickable="true"><!-- 如果不添加这个属性，当点击布局时，会和地图点击事件干扰 -->
+            <ImageView
+                android:id="@+id/v_touxiang"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/skate" />
 
+            <TextView
+                android:id="@+id/v_name"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:layout_alignTop="@+id/v_touxiang"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@+id/v_touxiang"
+                android:layout_toRightOf="@+id/v_touxiang"
+                android:layout_marginLeft="5dp"
+                android:text="飞奔的蜗牛"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/v_jion"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="340dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/add" />
+
+            <TextView
+                android:id="@+id/v_them"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="98dp"
+                android:textColor="#000000"
+                android:text="美食"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/v_time"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="330dp"
+                android:layout_marginTop="128dp"
+                android:textColor="#000000"
+                android:text="2018.3.15"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/v_palce"
+                android:layout_width="300dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="128dp"
+                android:textColor="#000000"
+                android:text="四川理工学院"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/v_description"
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="158dp"
+                android:textColor="#000000"
+                android:text="chulaiasdjahdfsahfausihfawfhakesjfhasjkhfasuihauiogiaurg"
+                android:textSize="14sp" />
+        </RelativeLayout>
         <android.support.v7.widget.Toolbar
             android:id="@+id/index_toolbar"
             android:layout_width="match_parent"
@@ -39,17 +116,34 @@
                 android:textSize="20dp" />
         </android.support.v7.widget.Toolbar>
 
+            <!--筛选栏-->
+            <LinearLayout
+                android:layout_marginTop="50dp"
+                android:id="@+id/release_choose_tabview1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <include
+                    layout="@layout/release_choose_tabview"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="90dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray" />
+            </LinearLayout>
+
     </FrameLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.example.fxr.myapplication.releaseInformation.ExpandTabView
-            android:id="@+id/expand_tabview"
-            android:layout_marginTop="50dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"/>
 
         <ImageView
             android:id="@+id/myLocation"
