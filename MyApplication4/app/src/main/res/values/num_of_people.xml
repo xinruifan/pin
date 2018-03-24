@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="num_people">
-        <item>1-3人</item>
-        <item>3-5人</item>
-        <item>5-10人</item>
-        <item>10-15人</item>
-        <item>15人以上</item>
+        <item>1人</item>
+        <item>2人</item>
+        <item>3人</item>
+        <item>4人</item>
+        <item>5人</item>
+        <item>6人</item>
+        <item>7人</item>
+        <item>8人</item>
+        <item>9人</item>
+        <item>10人</item>
+        <item>10人以上</item>
     </string-array>
 </resources>

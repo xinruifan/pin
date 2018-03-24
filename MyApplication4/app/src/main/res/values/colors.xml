@@ -17,6 +17,7 @@
     <color name="clicked">#DDDDDD</color>
     <color name="text3">#7F7F7F</color>
     <color name="blue">#4876ff</color>
-    <color name="gray">#858585</color>
+    <color name="gray">#706e6e</color>
     <color name="pink">#ff3333</color>
+    <color name="normal_color">#EDEDED</color>
 </resources>

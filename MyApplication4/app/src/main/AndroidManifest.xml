@@ -62,12 +62,16 @@
 
         <activity android:name=".index_fragment_information.SearchActivity"></activity>
         <activity android:name=".Add_moment"></activity>
+        <activity android:name=".releaseInformation.loc_change"></activity>
+
+
         <activity android:name=".message.addfriend"></activity>
         <activity android:name=".message.model.message_main"></activity>
         <activity android:name=".mineInformation.Mine_setting"></activity>
         <activity android:name=".mineInformation.Mine_information"></activity>
         <activity android:name=".mineInformation.Mine_info_cityEdit"></activity>
         <activity android:name=".mineInformation.Mine_info_seehead"></activity>
+
     </application>
 
 </manifest>

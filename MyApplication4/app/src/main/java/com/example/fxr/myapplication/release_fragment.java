@@ -2,13 +2,22 @@ package com.example.fxr.myapplication;
 
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -21,8 +30,15 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 import com.example.fxr.myapplication.releaseInformation.Moments;
+import com.example.fxr.myapplication.releaseInformation.Moments_Adapter;
+import com.pin.database.data.Activity;
 
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.PrintStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +48,18 @@ import java.util.List;
  * Created by fxr on 2017/5/24.
  */
 
- public class release_fragment extends Fragment {
-    private ListView listView;
+ public class release_fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
+
+     private Moments_Adapter adapter;
+    private RecyclerView recyclerView;
     private List<Moments> momentses = new ArrayList<>();
+    public static  String return_msg=null;
+    private SwipeRefreshLayout mRefreshLayout;
+
+    List<Activity> actvits = new ArrayList<>();
+
+
+
 
 //-------------------------------------------------
     /**
@@ -75,7 +100,208 @@ import java.util.List;
     private CheckBox mTypeCb;
 
     chooseItemFilterPop mPopupWindow;
-    //--------------------------------------
+
+
+
+
+//--------------------------------------
+
+    //为recycleview 重写item类
+    public class SpaceItemDecoration extends RecyclerView.ItemDecoration {
+
+        private int mSpace;
+
+        public SpaceItemDecoration(Context context,int dpValue) {
+            mSpace = dp2px(context,dpValue);
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            if(parent.getChildAdapterPosition(view) > 0) {
+                //从第二个条目开始，距离上方Item的距离
+                outRect.top = mSpace;
+            }
+        }
+
+        /**
+         * dp to px转换
+         * @param context
+         * @param dpValue
+         * @return
+         */
+        private int dp2px(Context context, int dpValue){
+            int pxValue = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, context.getResources().getDisplayMetrics());
+            return pxValue;
+        }
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.ac_2bar, menu);
+    }
+
+    public void fresh_ac(){
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    Thread.sleep(2000);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+                //
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        init1();
+                        adapter.notifyDataSetChanged();
+                        mRefreshLayout.setRefreshing(false);
+                    }
+                });
+            }
+        }).start();
+
+    }
+
+    @Override
+    public void onRefresh() {
+        mRefreshLayout.postDelayed(new Runnable() { // 发送延迟消息到消息队列
+            @Override
+            public void run() {
+                fresh_ac();
+                mRefreshLayout.setRefreshing(true); // 是否显示刷新进度;false:不显示
+            }
+        },1000);
+    }
+
+    private void init() {
+
+        new Thread() {
+            @Override
+            public void run() {
+
+                try {
+
+                    Socket socket = new Socket("192.168.1.111", 28889);
+                    PrintStream ps = null;
+                    ObjectInputStream in = null;
+
+                    ps = new PrintStream(socket.getOutputStream());
+
+                    in = new ObjectInputStream(socket.getInputStream());
+                    actvits = (List<Activity>) in.readObject();
+                    if (actvits != null) {
+                        ps.println("success");
+                        ps.flush();
+                        return_msg="初始化成功！";
+                    }else {
+                        return_msg="服务器繁忙！";
+                    }
+
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            for (int i=actvits.size()-1; i>=0; i--) {
+                                Moments m1 =
+                                        new Moments(R.drawable.basketball, R.drawable.join_ac,actvits.get(i).getAc_theme() + "", "飞翔的企鹅", actvits.get(i).getAc_start().toString() + "",
+                                                actvits.get(i).getAc_place() + "", actvits.get(i).getAc_number() + "",
+                                                actvits.get(i).getAc_content() + "");
+                                momentses.add(m1);
+                                adapter.notifyDataSetChanged();
+                            }
+                            Toast.makeText(getActivity().getApplicationContext(), return_msg, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+
+                    in.close();
+                    ps.close();
+                    socket.close();
+                } catch (UnknownHostException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+
+
+    }
+
+
+    private void init1() {
+
+
+
+        recyclerView.removeAllViews();
+        momentses.clear();
+
+
+        new Thread() {
+            @Override
+            public void run() {
+
+                try {
+
+                    Socket socket = new Socket("192.168.1.111", 28889);
+                    PrintStream ps = null;
+                    ObjectInputStream in = null;
+
+                    ps = new PrintStream(socket.getOutputStream());
+
+                    in = new ObjectInputStream(socket.getInputStream());
+                    actvits = (List<Activity>) in.readObject();
+
+                    if (actvits != null) {
+                        ps.println("success");
+                        ps.flush();
+                        return_msg="刷新成功！";
+                    }else {
+                        return_msg="服务器繁忙！";
+                    }
+
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+
+                            for (int i=actvits.size()-1; i>=0; i--) {
+                                Moments m1 =
+                                        new Moments(R.drawable.basketball, R.drawable.join_ac, actvits.get(i).getAc_theme() + "", "飞翔的企鹅", actvits.get(i).getAc_start().toString() + "",
+                                                actvits.get(i).getAc_place() + "", actvits.get(i).getAc_number() + "",
+                                                actvits.get(i).getAc_content() + "");
+                                momentses.add(m1);
+                                adapter.notifyDataSetChanged();
+                            }
+
+                            adapter.notifyDataSetChanged();
+
+                            Toast.makeText(getActivity().getApplicationContext(), return_msg, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+
+                    in.close();
+                    ps.close();
+                    socket.close();
+                } catch (UnknownHostException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+
+//------------------------------------------
+
+
+    //------------------------------------------
 
 
     @Override
@@ -83,12 +309,14 @@ import java.util.List;
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View contactsLayout = inflater.inflate(R.layout.release_layout, container, false);
+
         init();
 
 
         Toolbar toolbar = (Toolbar)contactsLayout.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
+
        // final TextView textView=(TextView) contactsLayout.findViewById(R.id.pp_name);
 
         //------------------------------------------------------------- -----------------------------
@@ -103,36 +331,55 @@ import java.util.List;
         mTimeCb = (CheckBox) contactsLayout.findViewById(R.id.cb_time);
         initView();
         initData();
+
+
+
+
+
         //----------------------------------------------------------------------------------------------
 
 
-        // init listview 数据
-        // 适配数据源  listview
-        com.example.fxr.myapplication.releaseInformation.Moments_Adapter adapter = new
-                com.example.fxr.myapplication.releaseInformation.Moments_Adapter(release_fragment.this, R.layout.moments_item, momentses);
-        listView = (ListView) contactsLayout.findViewById(R.id.listView);
-        listView.setAdapter(adapter);
-        //listview  item 点击事件
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Moments moments
-                        = momentses.get(position);
-                Toast.makeText(getActivity(), "this is a pp_activity", Toast.LENGTH_SHORT).show();
-            }
-        });
+        recyclerView = (RecyclerView) contactsLayout.findViewById(R.id.ac_recycVu);
+        SpaceItemDecoration decoration = new SpaceItemDecoration(getActivity(), 20);
+        recyclerView.addItemDecoration(decoration);
+
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(manager);
+        adapter = new Moments_Adapter(momentses);
+        recyclerView.setAdapter(adapter);
+
+        mRefreshLayout= (SwipeRefreshLayout) contactsLayout.findViewById(R.id.refresh);
+        mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
+        mRefreshLayout.setOnRefreshListener(this); // 设置刷新监听
 
 
-        //
-        FloatingActionButton floatingActionButton = (FloatingActionButton) contactsLayout.findViewById(R.id.floatingActionButton);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        Toolbar mToolbarTb = (Toolbar) contactsLayout.findViewById(R.id.ac_toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbarTb);
+        setHasOptionsMenu(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        mToolbarTb.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Add_moment.class);
-                startActivity(intent);
+            public boolean onMenuItemClick(MenuItem item) {
+
+                int menuItemId = item.getItemId();
+
+                if (menuItemId == R.id.plus) {
+
+
+                    Toast.makeText(getActivity(), "添加活动", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity().getApplicationContext(), Add_moment.class);
+                    startActivity(intent);
+
+                }
+
+                return true;
             }
         });
+        //--------------------------------------------------------
+
+
+
 
         return contactsLayout;
     }
@@ -244,25 +491,7 @@ import java.util.List;
         mPeoples.add("10人以上");
     }
 
-    private void init() {
-        for (int i = 0; i < 20; i++) {
-            Moments apple =
-                    new Moments(R.drawable.basketball,
-                            "运动", "飞翔的企鹅", "2018.01.09", "四川理工学院操场", "3/6",
-                            "周六下午，四川理工学院操场计算机学院班级友谊赛，速来报名！");
-            momentses.add(apple);
-            Moments banana =
-                    new Moments(R.drawable.skate,
-                            "户外", "飞翔的小鸟", "2017.02.09", "花海", "3/10",
-                            "10号中午约一波花海自助游，这有俩妹子了，想朋友多点一起耍，赶快加入吧！");
-            momentses.add(banana);
-            Moments cherry_pic =
-                    new Moments(R.drawable.burger,
-                            "美食", "飞翔的兔子", "2017.03.09", "盐工号子", "3/8",
-                            "还记得华商有一家很好吃的火锅，最近想去吃火锅了，找不到人，有没有小哥哥小姐姐一起啊，我们已经有三个了，再来几个啊，不嫌多！");
-            momentses.add(cherry_pic);
-        }
-    }
+
 
     /**
      * Tab筛选栏切换

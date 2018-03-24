@@ -28,7 +28,10 @@ public class Moments_Adapter extends RecyclerView.Adapter<Moments_Adapter.ViewHo
 
     static class ViewHolder extends RecyclerView.ViewHolder{
 
+
         ImageView pp_mimage;
+
+        ImageView pp_jion_mimage;
 
         TextView pp_mthem;
 
@@ -47,6 +50,7 @@ public class Moments_Adapter extends RecyclerView.Adapter<Moments_Adapter.ViewHo
             super(view);
 
             pp_mimage = (ImageView) view.findViewById (R.id.pp_mimage);
+            pp_jion_mimage = (ImageView) view.findViewById (R.id.jion_ac);
             pp_mthem = (TextView) view.findViewById (R.id.pp_mthem);
             pp_mcreator = (TextView) view.findViewById (R.id.pp_mcreator);
             pp_mtime = (TextView) view.findViewById (R.id.pp_mtime);
@@ -74,12 +78,16 @@ public class Moments_Adapter extends RecyclerView.Adapter<Moments_Adapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         Moments moments = mMomentsList.get(position);
-        holder.pp_mimage.setImageResource(moments.getPp_picure());   //璁剧疆鍥剧墖婧?        holder.pp_mthem.setText(moments.getPp_them());
+        holder.pp_mimage.setImageResource(moments.getPp_picure());
+        holder.pp_jion_mimage.setImageResource(moments.getPp_jion_picure());
+        holder.pp_mthem.setText(moments.getPp_them());
         holder.pp_mcreator.setText(moments.getPp_creator());
+        holder.pp_mthem.setText(moments.getPp_them());
         holder.pp_mtime.setText(moments.getPp_time());
         holder.pp_mlocation.setText(moments.getPp_location());
         holder.pp_mjion.setText(moments.getPp_join());
         holder.pp_mcontent.setText(moments.getPp_content());
+
     }
 
     @Override

@@ -1,14 +1,9 @@
 package com.example.fxr.myapplication.releaseInformation;
 
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.security.PrivateKey;
-
-
 public class Moments {
 
     private int pp_picure;
+    private int pp_jion_picure;
     private String pp_them;
     private String pp_creator;
     private String pp_time;
@@ -17,10 +12,12 @@ public class Moments {
     private String pp_content;
 
     public Moments() {
+        super();
     }
 
-    public Moments(int pp_picure, String pp_them, String pp_creator, String pp_time, String pp_location, String pp_join, String pp_content) {
+    public Moments(int pp_picure, int pp_jion_picure, String pp_them, String pp_creator, String pp_time, String pp_location, String pp_join, String pp_content) {
         this.pp_picure = pp_picure;
+        this.pp_jion_picure = pp_jion_picure;
         this.pp_them = pp_them;
         this.pp_creator = pp_creator;
         this.pp_time = pp_time;
@@ -35,6 +32,14 @@ public class Moments {
 
     public void setPp_picure(int pp_picure) {
         this.pp_picure = pp_picure;
+    }
+
+    public int getPp_jion_picure() {
+        return pp_jion_picure;
+    }
+
+    public void setPp_jion_picure(int pp_jion_picure) {
+        this.pp_jion_picure = pp_jion_picure;
     }
 
     public String getPp_them() {

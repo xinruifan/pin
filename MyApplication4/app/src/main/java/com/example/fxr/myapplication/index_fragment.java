@@ -10,9 +10,6 @@ import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -29,7 +26,6 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -48,23 +44,14 @@ import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
-
 import com.example.fxr.myapplication.index_fragment_information.SearchActivity;
 import com.example.fxr.myapplication.index_fragment_information.markbean;
-import com.example.fxr.myapplication.releaseInformation.Moments;
-import com.example.fxr.myapplication.releaseInformation.Moments_Adapter;
-import com.pin.database.data.Activity;
-
 import org.json.JSONArray;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.Socket;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * Created by fxr on 2017/5/24.
@@ -76,17 +63,6 @@ public class index_fragment extends Fragment {
     private BaiduMap baidumap;
     private ImageView my_location;
     private ImageView reload;
-
-
-    private Moments_Adapter adapter;
-    private RecyclerView recyclerView;
-    private List<Moments> momentses = new ArrayList<>();
-
-    private SwipeRefreshLayout mRefreshLayout;
-
-    List<Activity> actvits = new ArrayList<>();
-
-
     //定位
     private LocationClient mLocationClient;
     private MyLocationListener mLocationlistener;
@@ -96,13 +72,9 @@ public class index_fragment extends Fragment {
      private  Handler handler;
     //覆盖物
     private static  List<markbean> marks;
-    private static  List<markbean> marks1;
-    private BitmapDescriptor mMarker;
     private RelativeLayout r_marker;
     private BitmapDescriptor bitmapDescriptor;
     private Marker marker;
-
-
     /**
      * 展示时间的数据
      */
@@ -139,10 +111,7 @@ public class index_fragment extends Fragment {
      * 筛选分类整体
      */
     private CheckBox mTypeCb;
-
-
-
-    chooseItemFilterPop mPopupWindow;
+    private chooseItemFilterPop mPopupWindow;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -158,13 +127,8 @@ public class index_fragment extends Fragment {
         //初始定位
         initLocation();
         initmylocation();
-
         //覆盖物图标实现
-
-
         markClick();
-        //筛选
-//------------------------------------------------------------- -----------------------------
         /**
          * 初始化控件
          */
@@ -178,9 +142,8 @@ public class index_fragment extends Fragment {
         initData();
         //----------------------------------------------------------------------------------------------
 
-
         Toolbar toolbar = (Toolbar) contactsLayout.findViewById(R.id.index_toolbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        //((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
 
         final ImageView searcf = (ImageView) contactsLayout.findViewById(R.id.search);
@@ -193,9 +156,6 @@ public class index_fragment extends Fragment {
         });
         return contactsLayout;
     }
-    /**
-     * 自定义位置 四川理工学院
-     */
 
     /**
      * 用于地图显示覆盖物的方法
@@ -207,10 +167,9 @@ public class index_fragment extends Fragment {
             @Override
             public void run() {
                 try {
-
                     Socket socket;
                     //创建连接
-                    socket = new Socket("192.168.1.110", 28887);
+                    socket = new Socket("192.168.1.111", 28887);
 
                     //输入流的封装
                     BufferedReader br = new BufferedReader(new InputStreamReader(
@@ -289,22 +248,6 @@ public class index_fragment extends Fragment {
 
             }
         }.start();
-
-//   marks.add(new markbean(2,"美食","四川理工学院",3,
-//                    "明天中午","吃火锅","2,3,4",2,
-//            29.33854299126275,104.77203338333561));
-/*         handler=new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-               switch (msg.what){
-                   case  1 :
-                    marks1=(List<markbean>)msg.obj;
-                   break;
-               }
-            }
-        };*/
-
-
 
     }
 

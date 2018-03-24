@@ -5,18 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.search.core.CityInfo;
 import com.baidu.mapapi.search.core.SearchResult;
 import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
@@ -29,10 +25,6 @@ import com.baidu.mapapi.search.sug.SuggestionResult;
 import com.baidu.mapapi.search.sug.SuggestionSearch;
 import com.baidu.mapapi.search.sug.SuggestionSearchOption;
 import com.example.fxr.myapplication.R;
-
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-import java.util.Map;
 
 /**
  * Created by fxr on 2017/9/6.
@@ -81,21 +73,16 @@ public class SearchActivity extends AppCompatActivity  implements
          * 当输入关键字变化时，动态更新建议列表
          */
         keyWorldsView.addTextChangedListener(new TextWatcher() {
-
             @Override
             public void afterTextChanged(Editable arg0) {
 
             }
-
             @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1,
-                                          int arg2, int arg3) {
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
 
             }
-
             @Override
-            public void onTextChanged(CharSequence cs, int arg1, int arg2,
-                                      int arg3) {
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 if (cs.length() <= 0) {
                     return;
                 }
@@ -110,11 +97,7 @@ public class SearchActivity extends AppCompatActivity  implements
             }
         });
 
-
         reback_sure();
-        /**
-         * 获取SN,取得经纬度
-         */
 
     }
 
@@ -142,6 +125,7 @@ public class SearchActivity extends AppCompatActivity  implements
         });
 
     }
+
 
     @Override
     public void onGetPoiResult(PoiResult result) {
@@ -194,8 +178,6 @@ public class SearchActivity extends AppCompatActivity  implements
         }
         sugAdapter.notifyDataSetChanged();
     }
-
-
 
 }
 

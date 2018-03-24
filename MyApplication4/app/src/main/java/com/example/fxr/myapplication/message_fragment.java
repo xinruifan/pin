@@ -62,7 +62,8 @@ private  ListView list;
     //初始化toolbar并且添加监听器
 public void init(View v){
     Toolbar toolbar = (Toolbar)v.findViewById(R.id.message_toolbar);
-    ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+    //((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+    setHasOptionsMenu(true);
     addfriends=(ImageView)v.findViewById(R.id.addFriend_image);
     addfriends.setOnClickListener(this);
 }

@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/add_ac_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
@@ -23,130 +22,163 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="活动发布"
-            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+            android:textStyle="bold"
+            android:text="发布活动" />
 
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:layout_marginTop="5dp"
-        android:background="@drawable/linerlayoutborder"
+        android:background="@drawable/layout_select"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
+        <TextView
             android:id="@+id/them"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@color/white"
-            android:layout_weight="0.7"
-            android:text="主题："
-            android:textSize="20sp"/>
+            android:drawableLeft="@drawable/theme1"
+            android:text="  主题:  "
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:background="#FCFCFC"
+            android:visibility="visible" />
 
         <Spinner
             android:id="@+id/spiner_them"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:spinnerMode="dialog" />
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:visibility="visible" />
 
-        <Button
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:background="@drawable/layout_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
             android:id="@+id/p_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@color/white"
-            android:layout_weight="0.7"
-            android:text="人数"
-            android:textSize="20sp"/>
+            android:drawableLeft="@drawable/num"
+            android:text="  人数:  "
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:background="#FCFCFC"
+            android:visibility="visible" />
 
         <Spinner
             android:id="@+id/spiner_p_count"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.6"
-            android:spinnerMode="dialog" />
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:spinnerMode="dialog"
+            android:visibility="visible" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_marginTop="15dp"
-        android:background="@drawable/linerlayoutborder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/loaction"
+    <LinearLayout
+        android:id="@+id/select_loc"
+        android:layout_marginTop="15dp"
+        android:onClick="onClickLinerLayout"
+        android:background="@drawable/layout_select"
+        android:orientation="horizontal"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:textSize="20sp"
-            android:text="位置：" />
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/loc"
+            android:text=" 活动位置:"/>
 
-            <EditText
-                android:id="@+id/local_context"
-                style="?android:attr/textViewStyle"
-                android:background="@null"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:hint="在这里输入位置"
-                android:maxLines="2"
-                android:singleLine="false"/>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:background="#FCFCFC"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/ac_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_gravity="center_vertical"
+            android:text="点击，输入位置!"
+            android:gravity="center"
+            android:textSize="21sp"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="20dp"
         android:id="@+id/select_date000"
-        android:background="@drawable/linerlayoutborder"
+        android:background="@drawable/layout_select"
         android:orientation="horizontal"
+        android:onClick="onClickLinerLayout"
+        android:focusable="true"
+        android:clickable="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/select_date"
-            android:background="@color/white"
-            android:textSize="21sp"
-            android:text="活动开始时间: "/>
+        android:layout_height="50dp">
 
         <TextView
-            android:id="@+id/time0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:textSize="21sp"
-            android:inputType="date"
-            android:text="2018-01-01"/>
+            android:text=" 日期:"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/date"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:textSize="21sp"/>
 
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:id="@+id/select_date001"
-        android:background="@drawable/linerlayoutborder"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/select_date1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:textSize="21sp"
-            android:text="活动结束时间: "/>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:background="#FCFCFC"
+            android:visibility="visible" />
 
         <TextView
-            android:id="@+id/time1"
+            android:id="@+id/ac_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:textSize="21sp"
-            android:text="2018-01-01"/>
-
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="2018-01-01"
+            android:gravity="center"
+            android:textSize="23sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -157,40 +189,23 @@
         android:background="@drawable/linerlayoutborder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <Button
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:background="@color/white"
             android:textSize="20sp"
-            android:text="活动介绍"/>
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/content"
+            android:text=" 活动详细内容"/>
 
         <EditText
-            android:id="@+id/them_content"
+            android:id="@+id/ac_content"
             android:background="@drawable/linerlayoutborder"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:hint="在这输入文字^_^"
+            android:hint="请在这儿输入！"
             android:singleLine="false" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_margin="2dp"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageButton
-            android:src="@drawable/pic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-            android:id="@+id/bitmap"
-            android:layout_width="100dp"
-            android:layout_height="100dp" />
-
-
     </LinearLayout>
 
 </LinearLayout>
